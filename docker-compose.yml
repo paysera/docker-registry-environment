@@ -1,0 +1,15 @@
+version: '2'
+services:
+  registry:
+    build: registry
+    ports:
+      - 5000:5000
+    environment:
+      - REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY /data
+      - REGISTRY_AUTH htpasswd
+      - REGISTRY_AUTH_HTPASSWD_PATH /auth/htpasswd
+      - REGISTRY_AUTH_HTPASSWD_REALM Registry Realm
+    volumes:
+      - registry:/data
+volumes:
+  registry: {}
